@@ -1,6 +1,11 @@
 /*
 Matrix3X3 is a friend of Vector. Thus it's method 'multiply' is able 
 to access the private member variable 'coord' of Vector.
+Operation:
+[ 1 ]   [ 1, 3, 6 ]   
+[ 2 ] x [ 2, 12, 8]
+[ 3 ]   [ 4, 5, 7 ]
+
 Just debug to see outputs
 */
 
