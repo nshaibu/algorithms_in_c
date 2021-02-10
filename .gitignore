@@ -1,0 +1,6 @@
+a.out
+main
+*/a.out
+*.dSYM
+.DS_Store
+*/*.DS_Store
