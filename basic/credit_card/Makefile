@@ -10,4 +10,4 @@ credit_card.o: ./credit_card.cpp
 	$(CC) $(OPTS) -c ./credit_card.cpp
 
 clean:
-	rm -rf *.o
+	rm -rf *.o *.dSYM main

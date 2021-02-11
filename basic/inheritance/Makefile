@@ -13,4 +13,4 @@ person.o: ./person.cpp
 	$(CC) $(OPTS) -c ./person.cpp
 
 clean:
-	rm -rf *.o
+	rm -rf *.o *.dSYM main
