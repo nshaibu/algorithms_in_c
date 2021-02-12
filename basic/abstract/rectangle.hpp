@@ -6,7 +6,7 @@ class Rectangle : public Shape {
     public:
         Rectangle(float h, float w);
         ~Rectangle() {}
-        double calculateArea();
+        virtual double calculateArea();
         float getHeight() const { return height; }
         float getWidth() const { return width; }
     private:

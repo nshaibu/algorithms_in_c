@@ -6,7 +6,7 @@ class  Triangle : public Shape {
     public:
         Triangle(float b, float h);
         ~Triangle() {}
-        double calculateArea();
+        virtual double calculateArea();
     private:
         float breadth;
         float height;   

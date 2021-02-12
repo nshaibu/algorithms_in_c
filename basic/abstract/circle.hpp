@@ -9,7 +9,7 @@ class Circle : public Shape {
     public:
         Circle(double radius);
         ~Circle() {}
-        double calculateArea() { return PI * pow(radius, 2); }
+        virtual double calculateArea() { return PI * pow(radius, 2); }
         double getRadius() const { return radius; }
     private:
         double radius;
