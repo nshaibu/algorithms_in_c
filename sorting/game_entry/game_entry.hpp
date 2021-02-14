@@ -4,12 +4,13 @@
 
 class GameEntry {
     public:
+        GameEntry():score(0) { name = ""; }
         GameEntry(const std::string& n, unsigned int s);
         std::string getName() const { return name; }
         int getScore() const { return score; }
     private:
         std::string name;
         unsigned int score;
-}
+};
 
 #endif
