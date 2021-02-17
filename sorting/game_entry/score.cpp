@@ -1,3 +1,4 @@
+#include <iostream>
 #include "score.hpp"
 
 
@@ -5,6 +6,11 @@ Score::Score(unsigned max_entries) {
     maxEntries = max_entries;
     numEntries = 0;
     entries = new GameEntry[maxEntries];
+}
+
+void Score::printElements() {
+    for (int i = 0; i <= numEntries-1; i++)
+        std::cout << entries[i].getName() << ": " << entries[i].getScore() <<  std::endl;
 }
 
 void Score::add(const GameEntry& e)  {
@@ -27,7 +33,7 @@ void Score::add(const GameEntry& e)  {
 }
 
 GameEntry Score::remove(unsigned i) throw(IndexOutOfRangeError) {
-    if (i < 0 && i > maxEntries-1)
+    if (i < 0 || i > maxEntries-1)
         throw IndexOutOfRangeError("Index Out of range");
     
     GameEntry e = entries[i];
