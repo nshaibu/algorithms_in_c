@@ -9,7 +9,7 @@ class Score {
         Score(unsigned max_entries);
         ~Score() { delete [] entries; }
         void add(const GameEntry& e);
-        GameEntry& remove(unsigned i) throw(IndexOutOfRangeError);
+        GameEntry remove(unsigned i) throw(IndexOutOfRangeError);
     private:
         unsigned int maxEntries;
         unsigned int numEntries;
