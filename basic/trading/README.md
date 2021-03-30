@@ -21,3 +21,4 @@ $ ./test (for linux and mac)
 
 $ .\test    (For windows)
 ```
+NOTE: No third-party dependency required for the tests.
