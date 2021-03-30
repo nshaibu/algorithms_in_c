@@ -14,6 +14,7 @@ class Order {
         int getQuantity() { return quantity; }
         string getCompanyName() const { return companyName; }
         string getSide() const { return side; }
+        void setQuantity(int qty) { quantity = qty; }
     private:
         string orderID;
         string securityID;
