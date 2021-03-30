@@ -52,7 +52,7 @@ void OrderCacheTestCases::testAllOrdersOfSecurityIDAtAQuantityLimitCanBeCancelle
     test_run += 1;
     std::string security_id = "SecId1";
     int count = cache->cancelOrderForSecurityID(security_id, 200);
-    assert((count == 2));
+    assert((count == 1));
 }
 
 void OrderCacheTestCases::run() {

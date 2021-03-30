@@ -29,9 +29,10 @@ class OrderCache {
         int cancelOrderForSecurityID(const string& security_id, int limit_qty);
         unsigned int length() const { return mem.size(); }
         const Order getOrder(int position) throw(OrderDoesNotExistError); 
+        void print();
         void clearCache() { mem.clear(); }
     private:
-        const string& getOrderID(); 
+        string getOrderID(); 
         vector<Order> mem;
 };
 

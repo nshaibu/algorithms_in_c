@@ -9,11 +9,16 @@ void OrderCache::addOrder(const string& security_id, const string& side,
     mem.push_back(ord);
 }
 
-const string& OrderCache::getOrderID() {
+string OrderCache::getOrderID() {
     int len = length();
     len += 1;
-    static string order_id = "OrdId" + std::to_string(len);
-    return order_id;
+    return "OrdId" + std::to_string(len);
+}
+
+void OrderCache::print() {
+    for (Order ord: mem) {
+            cout << ord << endl;
+    }
 }
 
 int OrderCache::findOrderByOrderID(const string& order_id) {
@@ -38,10 +43,11 @@ const Order OrderCache::getOrder(int position) throw(OrderDoesNotExistError) {
 }
 
 void OrderCache::cancelOrderByOrderID(const string& order_id) throw(OrderDoesNotExistError){
-    int postion = findOrderByOrderID(order_id);
-    if (postion == -1)
+    int position = findOrderByOrderID(order_id);
+    if (position == -1)
         throw OrderDoesNotExistError("Order does not exist.");
-    mem.erase(mem.begin() +  postion);
+    vector<Order>::iterator it = mem.begin();
+    mem.erase(it + position);
 }
 
 vector<Order> OrderCache::findAllUserOrders(const string& user_id) {
@@ -56,8 +62,9 @@ vector<Order> OrderCache::findAllUserOrders(const string& user_id) {
 vector<Order> OrderCache::findAllSecurityIDOrders(const string& security_id) {
     vector<Order> vec;
     for (Order order : mem) {
-        if (order.getSecurityID() == security_id)
+        if (order.getSecurityID() == security_id) {
             vec.push_back(order);
+        }
     }
     return vec;
 }
@@ -77,17 +84,16 @@ int OrderCache::cancelOrderByUserID(const string& user_id) {
 
 int OrderCache::cancelOrderForSecurityID(const string& security_id, int limit_qty) {
     const vector<Order> orders = findAllSecurityIDOrders(security_id);
-    int failCounts =  0;
+    int count = 0;
     for (Order order: orders) {
         if  (order.getQuantity() >= limit_qty) {
             try {
                 cancelOrderByOrderID(order.getOrderID());
-            } catch(Exception &ex) {
-                failCounts += 1;
-            }
+                count++;
+            } catch(Exception &ex) {}
         }
     }
-    return orders.size() - failCounts;
+    return count;
 }
 
 const Match* OrderCache::getOrderMatchBySecurityID(const string& security_id) throw(OrderDoesNotExistError) {
